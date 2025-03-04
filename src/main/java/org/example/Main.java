@@ -2,17 +2,22 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(isPalindrome(1003));
+        System.out.println(isPalindrome(11212));
         System.out.println(isPerfectNumber(-1));
         System.out.println(numberToWords(-12));
     }
 
-    public static boolean isPalindrome(int number){
-        if (number < 0) return false;
-
+    public static boolean isPalindrome(int number) {
         String numberString = String.valueOf(number);
-        String reversedNumberString = new StringBuilder(numberString).reverse().toString();
-        return numberString.equals(reversedNumberString);
+        if (number >= 0) {
+            String reversedNumberString = new StringBuilder(numberString).reverse().toString();
+            return numberString.equals(reversedNumberString);
+        } else {
+            numberString = numberString.substring(1);
+            String reversedNumberString = new StringBuilder(numberString).reverse().toString();
+            reversedNumberString = "-" + reversedNumberString;
+            return String.valueOf(number).equals(reversedNumberString);
+        }
     }
 
     public static boolean isPerfectNumber(int number){
